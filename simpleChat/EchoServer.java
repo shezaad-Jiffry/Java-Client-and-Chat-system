@@ -67,9 +67,8 @@ public class EchoServer extends AbstractServer {
         }
         //echoes back
         else {
-        	try {
-				client.sendToClient(client.getInfo("username") + "> "+ msg);
-			} catch (IOException e) {}
+        	sendToAllClients(client.getInfo("username") + "> "+ msg);
+			
         }
         
         
