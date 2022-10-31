@@ -45,8 +45,12 @@ public class ChatClient extends AbstractClient {
         	System.exit(0);
         this.userName = userName;
         this.clientUI = clientUI;
+        try {
+        	openConnection();
+        }catch(Exception e) {
+        	System.out.println("cannot open connection awaiting command");
+        }
         
-        openConnection();
 
     }
 
@@ -70,6 +74,7 @@ public class ChatClient extends AbstractClient {
      */
     public void handleMessageFromClientUI(String message) {
         //commands available when connected
+    	
     	if(message.startsWith("#")) {
     		
     		//if possible split into 2 arguments based on command

@@ -127,6 +127,7 @@ public class EchoServer extends AbstractServer {
             case "#setport":
                 try {
                     this.setPort(Integer.parseInt(command[1]));
+                    serverUI.display("Server port set to " + this.getPort() );
                 } catch (Exception e) {
                     serverUI.display("incorrect parameter for port");
                 }
@@ -187,6 +188,7 @@ public class EchoServer extends AbstractServer {
      */
     synchronized protected void clientDisconnected(ConnectionToClient client) {
         serverUI.display(client.getInfo("username") + " has disconnected");
+        this.sendToAllClients("SERVER MSG> " + client.getInfo("username") + " has disconnected");
 
     }
     /**
@@ -199,7 +201,7 @@ public class EchoServer extends AbstractServer {
      */
     synchronized protected void clientException(ConnectionToClient client, Throwable exception) {
         clientDisconnected(client);
-        System.out.println(exception + " was the exception thrown");
+        
 
     }
     public void quit() {
