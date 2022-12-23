@@ -1,1 +1,1 @@
-# Seg2136-Assignment2
+A simple client and chat system made in java
